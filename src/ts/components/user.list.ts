@@ -19,7 +19,7 @@ function sorts(list: any) {
 export default {
 	oninit: UserModel.loadList,
 	view() {
-		return m("div",
+		return m("div", {style: "padding-left: 1em"},
 			m("a.item", { href: "/users/create", oncreate: m.route.link }, `Create a new user`),
 			m("table", sorts(UserModel.list), [
 				m("tr", [

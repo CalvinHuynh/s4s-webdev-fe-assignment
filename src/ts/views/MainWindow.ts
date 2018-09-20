@@ -1,4 +1,4 @@
-import m from 'mithril';
+import m from "mithril";
 
 export default {
     view(vnode) {
@@ -9,21 +9,21 @@ export default {
                         m("div#sidebar-collapse-title", { class: "sidebar-header" },
                             [
                                 m("h3", "Webdev FE based on Jiskerfet"),
-                                m("strong", "Alice")
-                            ]
+                                m("strong", "Alice"),
+                            ],
                         ),
                         m("ul", { class: "list-unstyled components" },
                             m("li", { class: "list-unstyled components" }, [
-                                m("a", { href: "/", oncreate: m.route.link },[
-                                    m("i", { class: "fas fa-briefcase" }, "home")
+                                m("a", { href: "/", oncreate: m.route.link }, [
+                                    m("i", { class: "fas fa-briefcase" }, "home"),
                                 ]),
                                 m("a", { href: "/users", oncreate: m.route.link }, [
-                                    m("i", { class: "fas fa-briefcase" }, "users")
-                                ])
-                            ])
+                                    m("i", { class: "fas fa-briefcase" }, "users"),
+                                ]),
+                            ]),
 
-                        )
-                    ]
+                        ),
+                    ],
                 ),
                 m("main",
                     m("div", { class: "container-fluid" }, [
@@ -31,14 +31,14 @@ export default {
                             m("div", { class: "container-fluid" },
                                 m("button#sidebar-collapse", { class: "btn btn-info" }, [
                                     m("i", { class: "fas fa-align-left" }, ""),
-                                    m("span", "toggle sidebar")
-                                ])
-                            )
+                                    m("span", "toggle sidebar"),
+                                ]),
+                            ),
                         ]),
-                        m("section", vnode.children)
-                    ])
-                )
-            ]
+                        m("section", vnode.children),
+                    ]),
+                ),
+            ],
         );
-    }
-} as m.Component
+    },
+} as m.Component;

@@ -1,8 +1,8 @@
-import m from 'mithril'
-import UserModel from '../models/user.model'
+import m from "mithril";
+import UserModel from "../models/user.model";
 
 export interface Attrs {
-	id: string
+	id: string;
 }
 
 export default {
@@ -11,18 +11,16 @@ export default {
 		return m("form.user-form",
 			{
 				onsubmit: (e: Event) => {
-					e.preventDefault()
+					e.preventDefault();
 					UserModel.create(UserModel.new);
-					console.log('creating a new user...')
-					console.log(UserModel.new)
-				}
+				},
 			},
 			[
 				m("div",
 					m("label.label", "Username"),
 					m("input.input[type=text][placeholder=Username][required]", {
 						oninput: m.withAttr("value", value => {
-							UserModel.new.username = value
+							UserModel.new.username = value;
 						}),
 					}),
 				),
@@ -30,7 +28,7 @@ export default {
 					m("label.label", "Email"),
 					m("input.input[type=text][placeholder=Email][required]", {
 						oninput: m.withAttr("value", value => {
-							UserModel.new.email = value
+							UserModel.new.email = value;
 						}),
 					}),
 				),
@@ -38,16 +36,16 @@ export default {
 					m("label.label", "Date of birth"),
 					m("input.input[placeholder=yyyy-mm-dd format][required]", {
 						oninput: m.withAttr("value", value => {
-							UserModel.new.birthDate = value
+							UserModel.new.birthDate = value;
 						}),
 					}),
 				),
 				m("div",
 					m("div",
 						m("button.button[type=submit]", "Save"),
-					)
+					),
 				),
-			]
-		)
-	}
-} as m.Component<Attrs>
+			],
+		);
+	},
+} as m.Component<Attrs>;

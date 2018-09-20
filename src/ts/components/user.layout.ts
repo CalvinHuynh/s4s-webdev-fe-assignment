@@ -1,12 +1,12 @@
-import m from 'mithril'
+import m from "mithril";
 
 export default {
-    view (vnode) {
+    view(vnode) {
         return m("main.layout", [
             m("nav.menu", [
-                m("a[href='/list']", {oncreate: m.route.link}, "Users")
+                m("a[href='/list']", { oncreate: m.route.link }, "Users"),
             ]),
-            m("section", vnode.children)
-        ])
-    }
-} as m.Component
+            m("section", vnode.children),
+        ]);
+    },
+} as m.Component;

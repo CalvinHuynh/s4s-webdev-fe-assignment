@@ -1,59 +1,56 @@
-import m from 'mithril'
+import m from "mithril";
 
 export interface User {
-	createdDate: Date
-	userId: string
-	email: string
-	username: string
-	birthDate: Date
+	createdDate: Date;
+	userId: string;
+	email: string;
+	username: string;
+	birthDate: Date;
 }
 
 const UserModel = {
 	list: [] as User[],
 	loadList() {
-		return m.request<{data: User[]}>({
+		return m.request<{ data: User[] }>({
 			method: "GET",
-			url: "http://localhost:3000/users"
+			url: "http://localhost:3000/users",
 		})
-		.then(result => {
-			UserModel.list = result.data
-		})
+			.then(result => {
+				UserModel.list = result.data;
+			});
 	},
 
 	current: {} as User,
-	load (username: string) {
+	load(username: string) {
 		return m.request<User>({
 			method: "GET",
-			url: "http://localhost:3000/users/" + username
+			url: "http://localhost:3000/users/" + username,
 		})
-		.then(result => {
-			UserModel.current = result
-		})
+			.then(result => {
+				UserModel.current = result;
+			});
 	},
 
 	updatedUser: {} as any,
-    update(username: string) {
-        return m.request({
-            method: "PATCH",
-            url: "http://localhost:3000/users/" + username,
-            data: UserModel.current
-        }).then(result => {
-			UserModel.updatedUser = result
+	update(username: string) {
+		return m.request({
+			method: "PATCH",
+			url: "http://localhost:3000/users/" + username,
+			data: UserModel.current,
+		}).then(result => {
+			UserModel.updatedUser = result;
 		}).catch(err => {
-			UserModel.updatedUser = err
-		})
+			UserModel.updatedUser = err;
+		});
 	},
 
 	delete(username: string) {
 		return m.request({
-            method: "DELETE",
-            url: "http://localhost:3000/users/" + username,
-        }).then(result => {
-			console.log('deleted user')
-			console.log(result)
+			method: "DELETE",
+			url: "http://localhost:3000/users/" + username,
+		}).then(result => {
 		}).catch(err => {
-			console.log(err)
-		})
+		});
 	},
 
 	new: {} as any,
@@ -61,15 +58,15 @@ const UserModel = {
 		return m.request({
 			method: "POST",
 			url: "http://localhost:3000/users",
-			data: user
+			data: user,
 		}).then(result => {
-			UserModel.new = result
+			UserModel.new = result;
 		}).catch(err => {
-			UserModel.new = err
-		})
-	}
-}
+			UserModel.new = err;
+		});
+	},
+};
 
-type UserModel = typeof UserModel
+type UserModel = typeof UserModel;
 
-export default UserModel
+export default UserModel;

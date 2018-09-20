@@ -13,6 +13,8 @@ export default {
 				onsubmit: (e: Event) => {
 					e.preventDefault()
 					UserModel.create(UserModel.new);
+					console.log('creating a new user...')
+					console.log(UserModel.new)
 				}
 			},
 			[
@@ -43,7 +45,8 @@ export default {
 				m("div",
 					m("div",
 						m("button.button[type=submit]", "Save"),
-					))
+					)
+				),
 			]
 		)
 	}

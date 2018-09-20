@@ -38,7 +38,7 @@ m.route(document.body, "/", {
 		}
     },
     "/users/create": {
-        render(vnode) {
+        render() {
             return m(MainWindow, m(CreateUserForm))
         }
     }

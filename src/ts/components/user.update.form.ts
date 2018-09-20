@@ -15,7 +15,9 @@ export default {
 			{
 				onsubmit: (e: Event) => {
 					e.preventDefault()
-					UserModel.update(UserModel.current.username);
+					UserModel.update(UserModel.current.username)
+					console.log('Updated user...')
+					console.log(UserModel.updatedUser)
 				}
 			},
 			[

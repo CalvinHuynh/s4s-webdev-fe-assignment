@@ -4,7 +4,8 @@ import UserModel from '../models/user.model'
 export default {
 	oninit: UserModel.loadList,
 	view() {
-		return m("a.item", {href: "/users/create", oncreate: m.route.link},`Create a new user`,
+		return m("div",
+			m("a.item", { href: "/users/create", oncreate: m.route.link }, `Create a new user`),
 			m(".user-list",
 				UserModel.list.map(user =>
 					m(".user-list-item",

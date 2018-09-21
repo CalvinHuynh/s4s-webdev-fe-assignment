@@ -14,8 +14,10 @@ export default {
 		return m("form.user-form",
 			{
 				onsubmit: (e: Event) => {
-					e.preventDefault();
-					UserModel.update(UserModel.current.username);
+					// e.preventDefault();
+					UserModel.update(UserModel.current.username).then(res => {
+						return m("a[href='/users']", { config: m.route });
+					});
 				},
 			},
 			[
@@ -49,7 +51,14 @@ export default {
 				m("div",
 					m("div",
 						m("button.button[type=submit]", "Save"),
-					)),
+						m("a", {
+							href: "/users/",
+							oncreate: m.route.link,
+						},
+							m("button", { onclick: UserModel.delete(UserModel.current.username) }, "Delete"),
+						),
+					),
+				),
 			],
 		);
 	},

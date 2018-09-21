@@ -32,9 +32,11 @@ export default {
 						m("td", user.userId),
 						m("td", user.username),
 						m("td",
-							m("a.item",
+							m("a",
 								{ href: "/users/" + user.username + "/edit", oncreate: m.route.link },
-								`Edit`)),
+								m("button", "Edit"),
+							),
+						),
 					]);
 				}),
 			]),

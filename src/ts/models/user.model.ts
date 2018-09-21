@@ -26,8 +26,8 @@ const UserModel = {
 			method: "GET",
 			url: "http://localhost:3000/users/" + username,
 		})
-			.then(result => {
-				UserModel.current = result;
+			.then((result: any) => {
+				UserModel.current = result.data;
 			});
 	},
 

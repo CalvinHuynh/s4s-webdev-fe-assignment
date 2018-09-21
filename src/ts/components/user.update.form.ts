@@ -51,12 +51,12 @@ export default {
 				m("div",
 					m("div",
 						m("button.button[type=submit]", "Save"),
-						m("a", {
-							href: "/users/",
-							oncreate: m.route.link,
-						},
-							m("button", { onclick: UserModel.delete(UserModel.current.username) }, "Delete"),
-						),
+						// m("a", {
+						// 	href: "/users/",
+						// 	oncreate: m.route.link,
+						// },
+						// 	m("button", { onclick: UserModel.delete(UserModel.current.username) }, "Delete"),
+						// ),
 					),
 				),
 			],

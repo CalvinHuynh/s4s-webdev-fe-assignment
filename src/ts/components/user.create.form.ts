@@ -12,7 +12,9 @@ export default {
 			{
 				onsubmit: (e: Event) => {
 					e.preventDefault();
-					UserModel.create(UserModel.new);
+					UserModel.create(UserModel.new).then(res => {
+						alert("Created new user " + UserModel.new.username);
+					});
 				},
 			},
 			[

@@ -31,16 +31,15 @@ const UserModel = {
 			});
 	},
 
-	updatedUser: {} as any,
 	update(username: string) {
 		return m.request({
 			method: "PATCH",
 			url: "http://localhost:3000/users/" + username,
 			data: UserModel.current,
-		}).then(result => {
-			UserModel.updatedUser = result;
+		}).then((result: any) => {
+			UserModel.current = result.data;
 		}).catch(err => {
-			UserModel.updatedUser = err;
+			UserModel.current = err;
 		});
 	},
 
@@ -60,7 +59,7 @@ const UserModel = {
 			url: "http://localhost:3000/users",
 			data: user,
 		}).then(result => {
-			UserModel.new = result;
+			return result;
 		}).catch(err => {
 			UserModel.new = err;
 		});

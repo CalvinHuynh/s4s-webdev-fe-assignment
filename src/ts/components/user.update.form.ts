@@ -14,9 +14,9 @@ export default {
 		return m("form.user-form",
 			{
 				onsubmit: (e: Event) => {
-					// e.preventDefault();
+					e.preventDefault();
 					UserModel.update(UserModel.current.username).then(res => {
-						return m("a[href='/users']", { config: m.route });
+						alert("Updated user " + UserModel.current.username);
 					});
 				},
 			},

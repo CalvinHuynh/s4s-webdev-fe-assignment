@@ -16,11 +16,19 @@ function sorts(list: any) {
 	};
 }
 
+function removeUser(username: string) {
+	UserModel.delete(username);
+}
+
 export default {
 	oninit: UserModel.loadList,
+
 	view() {
 		return m("div", { style: "padding-left: 1em" },
 			m("a.item", { href: "/users/create", oncreate: m.route.link }, `Create a new user`),
+			m("div",
+				m("span", "The table can be sorted by clicking the headers."),
+			),
 			m("table", sorts(UserModel.list), [
 				m("tr", [
 					m("th[data-sort-by=userId]", "Id"),
@@ -32,9 +40,11 @@ export default {
 						m("td", user.userId),
 						m("td", user.username),
 						m("td",
-							m("a",
-								{ href: "/users/" + user.username + "/edit", oncreate: m.route.link },
-								m("button", "Edit"),
+							m("div",
+								m("a",
+									{ href: "/users/" + user.username + "/edit", oncreate: m.route.link },
+									m("button", "Edit"),
+								), m("button", { onclick: removeUser(user.username) }, "Delete"),
 							),
 						),
 					]);
